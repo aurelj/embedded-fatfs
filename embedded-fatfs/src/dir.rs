@@ -1045,7 +1045,7 @@ impl LongNameBuilder {
         let index = data.order() & 0x1F;
         if index == 0 || usize::from(index) > MAX_LONG_DIR_ENTRIES {
             // Corrupted entry
-            warn!("currupted lfn entry! {:x}", data.order());
+            warn!("corrupted lfn entry! {:x}", data.order());
             self.clear();
             return;
         }
@@ -1057,7 +1057,7 @@ impl LongNameBuilder {
         } else if self.index == 0 || index != self.index - 1 || data.checksum() != self.chksum {
             // Corrupted entry
             warn!(
-                "currupted lfn entry! {:x} {:x} {:x} {:x}",
+                "corrupted lfn entry! {:x} {:x} {:x} {:x}",
                 data.order(),
                 self.index,
                 data.checksum(),
